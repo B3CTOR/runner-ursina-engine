@@ -31,7 +31,11 @@ def start():
 
 def restart():
 	player.coins = 0
-	player.eternal = True
+	player.in_air = False
+	player.j_mid = False
+	player.j_left = False
+	player.j_right = False
+	player.landing = False
 	score_coins.color = color.white
 	for i in main_menu.buttons:
 		i.enabled = True
@@ -113,7 +117,7 @@ def update():
 	global coins
 	global clear
 	global musics
-
+	print(player.position)
 	if player.start:
 		if getattr(Obstacle, 'spawn'):
 	
@@ -440,4 +444,3 @@ for menu in (main_menu, video_menu, settings_menu, audio_menu):
 	menu.on_enable = animate_in_menu
 
 app.run()
-	
